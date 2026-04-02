@@ -68,11 +68,14 @@ Penggunaan: Dalam struktur FHIR SATUSEHAT, ACSN digunakan untuk mengidentifikasi
   4. Sebelum kirim imaging study ke satu sehat Kirim Terlebih dahulu dari SIMRS KHANZA di Menu SERVICE REQUEST RADIOLOGI SATU SEHAT agar terikirim ACSN nya ke satu sehat
   5. Jika gagal terikirim ke satu sehat. Lihat log setelah kirim data pasien dari Menu SERVICE REQUEST RADIOLOGI SATU SEHAT copy semua log tersebut Tanya ke AI seperti Chatgpt agar bisa menganalisi ACSN yang terkirim ke Satu Sehat itu apa. INI PENTING BGT kalau ACSN Terkirim ke satu sehat MELEBIHI 16 DIGIT akan gagal ketika mengirim dari DICOM-ROUTERNYA
 
-     - CASE Yang diamalami saya pas gagal kirim itu karena melebi 16 digit ACSN saat kirim ke satu sehat
-     - dikhanza itu diambil dari NO ORDER ATAU NOMER PERMINTAAN RADIOLGI + dengan KODE PERIKSA radiologi. Diuasahakan menggunakan Angka KODE PERIKSANYA.
-<img width="243" height="238" alt="Image" src="https://github.com/user-attachments/assets/391fbf72-9702-4172-bcb0-532c17d2be0a" /> <img width="1000" height="182" alt="Image" src="https://github.com/user-attachments/assets/d3336e55-6b04-48e0-96b6-588095cc03ff" />
-    - Kalau di rs kaliam masing panjang KODE PERIKSA nya Harus diganti terlebih dahulu
-    - Contoh seperti gambar dibawah ini, ACSNya ketika kirim dari dicomerouter ke satu sehat berbeda, KARENA saat kirim SERVICE REQUEST RADIOLOGINYA berbeda dan melebih 16 DIGIT ![Image](https://github.com/user-attachments/assets/44665c09-569b-404b-ae05-8fc4cf3c033a)
+- CASE Yang diamalami saya pas gagal kirim itu karena melebi 16 digit ACSN saat kirim ke satu sehat
+- dikhanza itu diambil dari NO ORDER ATAU NOMER PERMINTAAN RADIOLGI + dengan KODE PERIKSA radiologi. Diuasahakan menggunakan Angka KODE PERIKSANYA.
+- <img width="243" height="238" alt="Image" src="https://github.com/user-attachments/assets/391fbf72-9702-4172-bcb0-532c17d2be0a" /> <img width="1000" height="182" alt="Image" src="https://github.com/user-attachments/assets/d3336e55-6b04-48e0-96b6-588095cc03ff" />
+- Kalau di rs kaliam masing panjang KODE PERIKSA nya Harus diganti terlebih dahulu
+- Contoh seperti gambar dibawah ini, ACSNya ketika kirim dari dicomerouter ke satu sehat berbeda, KARENA saat kirim SERVICE REQUEST RADIOLOGINYA berbeda dan melebih 16 DIGIT
+  ![Image](https://github.com/user-attachments/assets/44665c09-569b-404b-ae05-8fc4cf3c033a)
     -  Jadinya saya KALAU SEPERTI ITU fix dari Kirim ulang dengan  SERVICE REQUEST RADIOLOGINYA dan copy lognya lagi tanyakan ke AI kalau sudah diketahui ACSNYA,
     -  Ubah ACSNYA di mesin DR kalian, ikuti ACSN yang sudah dikirim
-       
+   ![Image](https://github.com/user-attachments/assets/d0f74283-4931-4c8f-b9f6-d81f20cdcadc)
+
+       ## DISCLAIMER ini cara manual yaaa. Selamat mencobaaaa
