@@ -42,15 +42,37 @@ Gambar Log dibawah ini berhasil terhubug :
 - Accession Number (ACSN)  adalah nomor unik yang diberikan secara otomatis oleh sistem informasi radiologi (RIS/PACS) untuk setiap pemeriksaan radiologi yang dilakukan pada pasien.
 - Fungsi: Nomor ini digunakan untuk melacak pesanan radiologi dan mencocokkan hasil pencitraan (gambar DICOM) dengan permintaan pemeriksaan (service request) di SATUSEHAT.
 Penggunaan: Dalam struktur FHIR SATUSEHAT, ACSN digunakan untuk mengidentifikasi studi pencitraan (ImagingStudy)
-- Gambar dibawah ini hasil analisis si AI 
+- Gambar ini hasil analisis si AI 
 ![Image](https://github.com/user-attachments/assets/334d8e80-7ed9-459a-becd-043d05d4c587)
 
 # 5. Setelah mengetahui ACSN yang terkirim ke kemenkes Kirim file dicome ke orthanc dari mesin DR 
 - Setelah dikirim lihat di web orthanc, biasanya dengan doamain http://10.0.0.102:8042/app/explorer.html (10.0.0.102 ip ini tergantung di rs masin2)
   <img width="1000" height="1000" alt="Image" src="https://github.com/user-attachments/assets/e7500ad7-32ac-440c-a85c-b9e3f9d0bb57" />
 
-- Klik all study, lalu pilih pasien yang sudah dikirim ke satu sehat melalui menu SIMRS KHANZA di Service Procedur RADIOLOGI Satu Sehat, ssetelah itu klik 
-- Kesimpulan d
+- Klik all study, lalu pilih pasien yang sudah dikirim ke satu sehat melalui menu SIMRS KHANZA di Service Procedur RADIOLOGI Satu Sehat
+- Pilih pasien yang sudah terikirim dari mesin DR
+- Klik kirim dicom modality ke dicomrouter yang tadi kita sudah setting
+<img width="591" height="301" alt="Image" src="https://github.com/user-attachments/assets/c4d99cbf-0133-4620-8875-efe3d9aa37df" /><img width="696" height="210" alt="Image" src="https://github.com/user-attachments/assets/3a9035ba-748d-4c0c-8aac-d52a11612d0d" />
+
+- Kalau berhasil muncul pilihan dicomrouter seperti gambar diatas
+- Setalah itu kirim MODALITY IMAGE ke dicomrouter satu sehat kemenkes
+  <img width="1896" height="595" alt="Image" src="https://github.com/user-attachments/assets/0e966486-45bf-4285-be51-0eee142a52de" />
+- Kalau sukses ada info succes di web orhtanc nya, Gambar dibawah ini sudah berhasil terkirim ke satu sehat
+  ![Image](https://github.com/user-attachments/assets/e05c8fab-a3fb-46ef-89fc-b0cb49d39630)
+- Selesai....
+
+## KESIMPULAN DAN SARAN
   1. Dicomerouter terInstall di komputer os windows
-  2. Setting file orthanc.json
-  3. Jika gagal lihat log 
+  2. Setting dicomerouter di file router.conf
+  3. Setting file orthanc.json
+  4. Sebelum kirim imaging study ke satu sehat Kirim Terlebih dahulu dari SIMRS KHANZA di Menu SERVICE REQUEST RADIOLOGI SATU SEHAT agar terikirim ACSN nya ke satu sehat
+  5. Jika gagal terikirim ke satu sehat. Lihat log setelah kirim data pasien dari Menu SERVICE REQUEST RADIOLOGI SATU SEHAT copy semua log tersebut Tanya ke AI seperti Chatgpt agar bisa menganalisi ACSN yang terkirim ke Satu Sehat itu apa. INI PENTING BGT kalau ACSN Terkirim ke satu sehat MELEBIHI 16 DIGIT akan gagal ketika mengirim dari DICOM-ROUTERNYA
+
+     - CASE Yang diamalami saya pas gagal kirim itu karena melebi 16 digit ACSN saat kirim ke satu sehat
+     - dikhanza itu diambil dari NO ORDER ATAU NOMER PERMINTAAN RADIOLGI + dengan KODE PERIKSA radiologi. Diuasahakan menggunakan Angka KODE PERIKSANYA.
+<img width="243" height="238" alt="Image" src="https://github.com/user-attachments/assets/391fbf72-9702-4172-bcb0-532c17d2be0a" /> <img width="1000" height="182" alt="Image" src="https://github.com/user-attachments/assets/d3336e55-6b04-48e0-96b6-588095cc03ff" />
+    - Kalau di rs kaliam masing panjang KODE PERIKSA nya Harus diganti terlebih dahulu
+    - Contoh seperti gambar dibawah ini, ACSNya ketika kirim dari dicomerouter ke satu sehat berbeda, KARENA saat kirim SERVICE REQUEST RADIOLOGINYA berbeda dan melebih 16 DIGIT ![Image](https://github.com/user-attachments/assets/44665c09-569b-404b-ae05-8fc4cf3c033a)
+    -  Jadinya saya KALAU SEPERTI ITU fix dari Kirim ulang dengan  SERVICE REQUEST RADIOLOGINYA dan copy lognya lagi tanyakan ke AI kalau sudah diketahui ACSNYA,
+    -  Ubah ACSNYA di mesin DR kalian, ikuti ACSN yang sudah dikirim
+       
